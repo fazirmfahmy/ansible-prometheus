@@ -1,7 +1,7 @@
-- name: Include blackbox exporter variables
+- name: "Include blackbox exporter variables"
   include_vars: 'blackboxexporter.yml'
 
-- name: Creating blackbox exporter directories
+- name: "Creating blackbox exporter directories"
   file:
     path: "{{ item }}"
     state: directory

@@ -1,7 +1,7 @@
-- name: Include prometheus variables
+- name: "Include prometheus variables"
   include_vars: 'prometheus.yml'
 
-- name: Creating Prometheus directories
+- name: "Creating Prometheus directories"
   file:
     path: "{{ item }}"
     state: directory
@@ -14,7 +14,7 @@
     - "{{ prometheus_lib_dir }}"
     - "{{ prometheus_rules_dir }}"
 
-- name: Download and extract Prometheus tarball
+- name: "Download and extract Prometheus tarball"
   unarchive:
     src: "{{ prometheus_tarball_url }}"
     dest: "{{ prometheus_install_dir }}"
@@ -24,7 +24,7 @@
     creates: "{{ prometheus_install_dir }}/{{ prometheus_archive }}"
   ignore_errors: "{{ ansible_check_mode }}"
 
-- name: Copy Prometheus config
+- name: "Copy Prometheus config"
   template:
     src: prometheus.yml.j2
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
@@ -46,7 +46,7 @@
   notify:
     restart prometheus
 
-- name: Install Prometheus systemd service
+- name: "Install Prometheus systemd service"
   template:
     src: prometheus.service.j2
     dest: /etc/systemd/system/prometheus.service

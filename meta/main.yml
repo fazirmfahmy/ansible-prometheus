@@ -1,6 +1,6 @@
 galaxy_info:
   author: "author"
-  description: Ansible playbook for managing Prometheus monitoring system
+  description: "Ansible playbook for managing Prometheus monitoring system"
   company: "company"
 
   license: "license"
