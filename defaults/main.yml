@@ -473,4 +473,4 @@ prometheus_black_box_log__level: 'info'
 
 prometheus_black_box_config_modules:
 # Blackbox modules config in format of YAML
-prometheus_config_directory
+prometheus_config_dir
