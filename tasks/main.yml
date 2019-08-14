@@ -2,20 +2,20 @@
 # tasks file for ansible-prometheus
 - name: "Create Prometheus group."
   group:
-    name: "{{ prometheus_group }}"
+    name: "{{ group_name }}"
     state: present
 
 - name: "Create Prometheus user"
   user:
-    name: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    name: "{{ owner_name }}"
+    group: "{{ group_name }}"
     createhome: no
     shell: /sbin/nologin
     state: present
 
-- name: "Create {{ prometheus_install_dir }}"
+- name: "Create {{ installation_directory_path }}"
   file:
-    path: "{{ prometheus_install_dir }}"
+    path: "{{ installation_directory_path }}"
     state: directory
     owner: "root"
     group: "root"
@@ -23,24 +23,24 @@
 
 - name: "Install Prometheus."
   import_tasks: install-prometheus.yml
-  when: prometheus_install
+  when: install_status
 
 - name: "Install Prometheus node exporter"
   import_tasks: install-node-exporter.yml
-  when: prometheus_node_exporter_install
+  when: node_exporter_install_status
 
 - name: "Install Prometheus alert manager."
   import_tasks: install-alert-manager.yml
-  when: prometheus_alert_manager_install
+  when: alert_manager_install_status
 
 - name: "Install Pushgateway."
   import_tasks: install-push-gateway.yml
-  when: prometheus_push_gateway_install
+  when: push_gateway_install_status
 
 - name: "Install Prometheus SNMP exporter."
   import_tasks: install-snmp-exporter.yml
-  when: prometheus_snmp_exporter_install
+  when: snmp_exporter_install_status
 
 - name: "Install Prometheus Blackbox exporter."
   import_tasks: install-blackbox-exporter.yml
-  when: prometheus_blackbox_exporter_install
+  when: blackbox_exporter_install_status

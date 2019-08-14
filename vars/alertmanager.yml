@@ -1,9 +1,7 @@
 _alert_manager_validate_url:
   "{% if prometheus_alert_manager_web__external_url is not none %}{{ prometheus_alert_manager_web__external_url }}{% else %}'http://127.0.0.1:9093'{% endif %}"
 
-############################################################
 # Auto generated
-############################################################
 prometheus_alert_manager_service_config:
   - ['alerts.gc-interval', "{{ prometheus_alert_manager_alerts__gc_interval }}"]
   - ['cluster.advertise-address', "{{ prometheus_alert_manager_cluster__advertise_address }}"]

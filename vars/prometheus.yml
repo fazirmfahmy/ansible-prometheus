@@ -1,6 +1,4 @@
-############################################################
 # Auto generated
-############################################################
 prometheus_service_config:
   - ['alertmanager.notification-queue-capacity', "{{ prometheus_alertmanager__notification_queue_capacity }}"]
   - ['alertmanager.timeout', "{{ prometheus_alertmanager__timeout }}"]

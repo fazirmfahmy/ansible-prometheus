@@ -4,11 +4,11 @@
 - name: "Download and extract Prometheus node exporter tarball"
   unarchive:
     src: "{{ prometheus_node_exporter_tarball_url }}"
-    dest: "{{ prometheus_install_dir }}"
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    dest: "{{ installation_directory_path }}"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
     copy: no
-    creates: "{{ prometheus_install_dir }}/{{ prometheus_node_exporter_archive }}"
+    creates: "{{ installation_directory_path }}/{{ prometheus_node_exporter_archive }}"
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Install Prometheus node exporter systemd service"

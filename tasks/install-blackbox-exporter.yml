@@ -5,35 +5,35 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
     mode: 0750
   with_items:
     - "{{ prometheus_config_dir }}"
-    - "{{ prometheus_blackbox_exporter_config_dir }}"
+    - "{{ blackbox_exporter_config_directoy_path }}"
 
 - name: "Download and extract Prometheus blackbox_exporter tarball"
   unarchive:
     src: "{{ prometheus_blackbox_exporter_tarball_url }}"
-    dest: "{{ prometheus_install_dir }}"
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    dest: "{{ installation_directory_path }}"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
     copy: no
-    creates: "{{ prometheus_install_dir }}/{{ prometheus_blackbox_exporter_archive }}"
+    creates: "{{ installation_directory_path }}/{{ prometheus_blackbox_exporter_archive }}"
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Copy blackbox exporter config"
   template:
     src: blackbox.yml.j2
-    dest: "{{ prometheus_blackbox_exporter_config_dir }}/blackbox.yml"
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    dest: "{{ blackbox_exporter_config_directoy_path }}/blackbox.yml"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
   notify:
     - reload blackboxexporter
 
 - name: "Apply elevated privileges to blackbox_exporter for ICMP probe"
   capabilities:
-    path: "{{ prometheus_install_dir }}/{{ prometheus_blackbox_exporter_archive }}/blackbox_exporter"
+    path: "{{ installation_directory_path }}/{{ prometheus_blackbox_exporter_archive }}/blackbox_exporter"
     capability: cap_net_raw+ep
     state: present
   ignore_errors: "{{ ansible_check_mode }}"

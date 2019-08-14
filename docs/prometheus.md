@@ -9,7 +9,7 @@ prometheus_config_global_evaluation_interval: '30s'
 prometheus_config_global_scrape_timeout: '10s'
 prometheus_config_global_external_labels:
 prometheus_config_rule_files:
-  - "{{ prometheus_rules_dir }}/*.rules.yml"
+  - "{{ rules_directory_path }}/*.rules.yml"
 
 # Prometheus alert manager rules
 # since Ansible uses double curly braces as well as Prometheus for
@@ -97,7 +97,7 @@ prometheus_web__cors__origin: ".*"
 prometheus_web__console__libraries: 'console_libraries'
 # Path to the console library directory.
 
-prometheus_storage__tsdb__path: "{{ prometheus_data_dir }}"
+prometheus_storage__tsdb__path: "{{ data_directory_path }}"
 # Base path for metrics storage.
 
 prometheus_storage__tsdb__retention: '15d'

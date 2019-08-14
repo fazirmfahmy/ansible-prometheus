@@ -1,6 +1,4 @@
-############################################################
 # Auto generated
-############################################################
 prometheus_push_gateway_service_config:
   - ['log.format', "{{ prometheus_push_gateway_log__format }}"]
   - ['log.level', "{{ prometheus_push_gateway_log__level }}"]

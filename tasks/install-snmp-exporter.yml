@@ -5,30 +5,30 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
     mode: 0750
   with_items:
     - "{{ prometheus_config_dir }}"
-    - "{{ prometheus_snmp_exporter_config_dir }}"
+    - "{{ snmp_exporter_config_directory_path }}"
 
 - name: "Download and extract Prometheus snmp_exporter tarball"
   unarchive:
     src: "{{ prometheus_snmp_exporter_tarball_url }}"
-    dest: "{{ prometheus_install_dir }}"
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
+    dest: "{{ installation_directory_path }}"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
     copy: no
-    creates: "{{ prometheus_install_dir }}/{{ prometheus_snmp_exporter_archive }}"
+    creates: "{{ installation_directory_path }}/{{ prometheus_snmp_exporter_archive }}"
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Copy snmp exporter config"
   copy:
     src: snmp.yml
-    dest: "{{ prometheus_snmp_exporter_config_dir }}/snmp.yml"
-    owner: "{{ prometheus_owner }}"
-    group: "{{ prometheus_group }}"
-    validate: "{{ prometheus_install_dir }}/{{ prometheus_snmp_exporter_archive }}/snmp_exporter --dry-run --config.file %s"
+    dest: "{{ snmp_exporter_config_directory_path }}/snmp.yml"
+    owner: "{{ owner_name }}"
+    group: "{{ group_name }}"
+    validate: "{{ installation_directory_path }}/{{ prometheus_snmp_exporter_archive }}/snmp_exporter --dry-run --config.file %s"
   notify:
     restart snmpexporter
 

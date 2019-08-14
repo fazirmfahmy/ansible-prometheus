@@ -1,6 +1,4 @@
-############################################################
 # Auto generated
-############################################################
 prometheus_node_exporter_service_config:
   - ['collector.diskstats.ignored-devices', "{{ prometheus_collector__diskstats__ignored_devices }}"]
   - ['collector.filesystem.ignored-mount-points', "{{ prometheus_collector__filesystem__ignored_mount_points }}"]

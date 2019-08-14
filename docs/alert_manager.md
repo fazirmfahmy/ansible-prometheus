@@ -17,7 +17,7 @@ prometheus_alert_manager_config_global:
 
 # The directory from which notification templates are read.
 prometheus_alert_manager_config_templates:
-  - "{{ prometheus_alert_manager_templates_dir }}/*.tmpl"
+  - "{{ alert_manager_templates_dirdirectory_path }}/*.tmpl"
 
 # The root route on which each incoming alert enters.
 prometheus_alert_manager_config_route:
@@ -76,7 +76,7 @@ prometheus_alert_manager_cluster__settle_timeout: '1m'
 prometheus_alert_manager_cluster__tcp_timeout: '10s'
 # Timeout for establishing a stream connection with a remote node for a
 # full state sync, and for stream read and write operations.
-prometheus_alert_manager_config__file: "{{ prometheus_alert_manager_config_dir }}/alertmanager.yml"
+prometheus_alert_manager_config__file: "{{ alert_manager_config_dirdirectory_path }}/alertmanager.yml"
 # Alertmanager configuration file name. (default "alertmanager.yml")
 prometheus_alert_manager_data__retention: '120h0m0s'
 # How long to keep data for. (default 120h0m0s)
@@ -84,7 +84,7 @@ prometheus_alert_manager_log__format: 'logfmt'
 # Output format of log messages. One of: [logfmt,json]
 prometheus_alert_manager_log__level: 'info'
 # Only log messages with the given severity or above. Valid levels: [debug, info, warn, error, fatal]. (default info)
-prometheus_alert_manager_storage__path: "{{ prometheus_alert_manager_data_dir }}"
+prometheus_alert_manager_storage__path: "{{ alert_manager_data_dirdirectory_path }}"
 # Base path for data storage. (default "data/")
 prometheus_alert_manager_web__external_url:
 # The URL under which Alertmanager is externally reachable

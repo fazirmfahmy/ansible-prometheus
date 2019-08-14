@@ -1,6 +1,4 @@
-############################################################
 # Auto generated
-############################################################
 prometheus_snmp_exporter_service_config:
   - ['config.file', "{{ prometheus_snmp_exporter_config__file }}"]
   - ['log.format', "{{ prometheus_snmp_exporter_log__format }}"]

@@ -3,12 +3,12 @@
   remote_user: root
   roles:
     - role: role_under_test
-      prometheus_install: true
-      prometheus_node_exporter_install: true
-      prometheus_alert_manager_install: true
-      prometheus_push_gateway_install: true
-      prometheus_snmp_exporter_install: true
-      prometheus_blackbox_exporter_install: true
+      install_status: true
+      node_exporter_install_status: true
+      alert_manager_install_status: true
+      push_gateway_install_status: true
+      snmp_exporter_install_status: true
+      blackbox_exporter_install_status: true
       prometheus_alert_manager_config_global:
         slack_api_url: 'https://github.com/ernestas-poskus/ansible-prometheus/pull/42'
       prometheus_alert_manager_config_receivers:
@@ -22,7 +22,7 @@
               title: "[[ range $Alerts ]][[ $Annotations.summary ]]\n[[ end ]]"
               text: "[[ range $Alerts ]][[ $Annotations.description ]]\n[[ end ]]"
               send_resolved: true
-      prometheus_black_box_config_modules:
+      black_box_config_modules_dirdirectory_path:
         http_2xx:
           prober: http
           http:
