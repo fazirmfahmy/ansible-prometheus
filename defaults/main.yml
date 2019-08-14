@@ -465,4 +465,4 @@ prometheus_black_box_log__level: 'info'
 # Only log messages with the given severity or above. One of: [debug, info, warn, error]
 
 prometheus_black_box_config_modules:
-# Blackbox modules config in format of YAML
+# Blackbox modules config in format of YAML.
