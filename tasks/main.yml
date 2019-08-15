@@ -23,7 +23,7 @@
 
 - name: "Install Prometheus."
   import_tasks: install-prometheus.yml
-  when: install_status
+  when: server_install_status
 
 - name: "Install Prometheus node exporter"
   import_tasks: install-node-exporter.yml

@@ -3,7 +3,7 @@
   remote_user: root
   roles:
     - role: role_under_test
-      install_status: true
+      server_install_status: true
       node_exporter_install_status: true
       alert_manager_install_status: true
       push_gateway_install_status: true
