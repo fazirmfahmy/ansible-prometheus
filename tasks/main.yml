@@ -5,7 +5,7 @@
     name: "{{ group_name }}"
     state: present
 
-- name: "Create Prometheus user"
+- name: "Create Prometheus user."
   user:
     name: "{{ owner_name }}"
     group: "{{ group_name }}"
@@ -13,7 +13,7 @@
     shell: /sbin/nologin
     state: present
 
-- name: "Create {{ installation_directory_path }}"
+- name: "Create {{ installation_directory_path }} ."
   file:
     path: "{{ installation_directory_path }}"
     state: directory
@@ -25,7 +25,7 @@
   import_tasks: install-prometheus.yml
   when: server_install_status
 
-- name: "Install Prometheus node exporter"
+- name: "Install Prometheus node exporter."
   import_tasks: install-node-exporter.yml
   when: node_exporter_install_status
 
