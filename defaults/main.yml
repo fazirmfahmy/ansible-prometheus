@@ -1,6 +1,6 @@
 ---
 
-server_install_status: true
+install_status: true
 node_exporter_install_status: true
 alert_manager_install_status: true
 push_gateway_install_status: false
@@ -22,8 +22,8 @@ alert_manager_templates_dirdirectory_path: "{{  }}/alertmanager/templates"
 snmp_exporter_config_directory_path: "{{  }}/snmpexporter"
 blackbox_exporter_config_directoy_path: "{{  }}/blackboxexporter"
 
-prometheus_version: '2.9.2'
-prometheus_platform_architecture: 'linux-amd64'
+server_version: '2.9.2'
+server_platform_architecture: 'linux-amd64'
 
 node_exporter_version: '0.17.0'
 
