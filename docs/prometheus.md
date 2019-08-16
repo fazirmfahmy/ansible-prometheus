@@ -55,7 +55,7 @@ prometheus_config_remote_write:
 prometheus_config_remote_read:
   # - url: 'http://localhost:8086/api/v1/prom/read?db=prometheus'
 
-prometheus_config__file: "{{ prometheus_config_dir }}/prometheus.yml"
+prometheus_config__file: "{{ server_configuration_directory_path }}/prometheus.yml"
 # Prometheus configuration file name.
 
 prometheus_log__format: "logfmt"

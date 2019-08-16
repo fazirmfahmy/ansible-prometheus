@@ -9,7 +9,7 @@
     group: "{{ group_name }}"
     mode: 0750
   with_items:
-    - "{{ prometheus_config_dir }}"
+    - "{{ server_configuration_directory_path }}"
     - "{{ snmp_exporter_config_directory_path }}"
 
 - name: "Download and extract Prometheus snmp_exporter tarball"

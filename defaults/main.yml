@@ -11,16 +11,16 @@ owner_name: 'prometheus'
 group_name: 'prometheus'
 
 installation_directory_path: '/usr/local/opt'
-: '/etc/prometheus'
+server_configuration_directory_path: '/etc/prometheus'
 library_directory_path: '/var/lib/prometheus'
-rules_directory_path: "{{  }}/rules"
+rules_directory_path: "{{ server_configuration_directory_path }}/rules"
 
 data_directory_path: "{{ library_directory_path }}/prometheus2"
 alert_manager_data_dirdirectory_path: "{{ library_directory_path }}/alertmanager"
-alert_manager_config_dirdirectory_path: "{{  }}/alertmanager"
-alert_manager_templates_dirdirectory_path: "{{  }}/alertmanager/templates"
-snmp_exporter_config_directory_path: "{{  }}/snmpexporter"
-blackbox_exporter_config_directoy_path: "{{  }}/blackboxexporter"
+alert_manager_config_dirdirectory_path: "{{ server_configuration_directory_path }}/alertmanager"
+alert_manager_templates_dirdirectory_path: "{{ server_configuration_directory_path }}/alertmanager/templates"
+snmp_exporter_config_directory_path: "{{ server_configuration_directory_path }}/snmpexporter"
+blackbox_exporter_config_directoy_path: "{{ server_configuration_directory_path }}/blackboxexporter"
 
 server_version: '2.9.2'
 server_platform_architecture: 'linux-amd64'
@@ -89,7 +89,7 @@ prometheus_config_remote_write:
 prometheus_config_remote_read:
 # - url: 'http://localhost:8086/api/v1/prom/read?db=prometheus'
 
-prometheus_config__file: "{{  }}/prometheus.yml"
+prometheus_config__file: "{{ server_configuration_directory_path }}/prometheus.yml"
 # Prometheus configuration file name.
 
 prometheus_log__format: "logfmt"

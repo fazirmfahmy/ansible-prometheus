@@ -9,7 +9,7 @@
     group: "{{ group_name }}"
     mode: 0750
   with_items:
-    - "{{ prometheus_config_dir }}"
+    - "{{ server_configuration_directory_path }}"
     - "{{ blackbox_exporter_config_directoy_path }}"
 
 - name: "Download and extract Prometheus blackbox_exporter tarball"

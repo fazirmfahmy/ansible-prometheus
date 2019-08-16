@@ -10,7 +10,7 @@
     mode: 0750
   with_items:
     - "{{ library_directory_path }}"
-    - "{{ prometheus_config_dir }}"
+    - "{{ server_configuration_directory_path }}"
     - "{{ alert_manager_data_dirdirectory_path }}"
     - "{{ alert_manager_config_dirdirectory_path }}"
     - "{{ alert_manager_templates_dirdirectory_path }}"
