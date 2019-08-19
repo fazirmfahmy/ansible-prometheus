@@ -21,7 +21,7 @@
     group: "root"
     mode: 0755
 
-- name: "Install Prometheus."
+- name: "Install Prometheus Server."
   import_tasks: install-prometheus.yml
   when: server_install_status
 

@@ -11,9 +11,9 @@
   with_items:
     - "{{ library_directory_path }}"
     - "{{ server_configuration_directory_path }}"
-    - "{{ alert_manager_data_dirdirectory_path }}"
-    - "{{ alert_manager_config_dirdirectory_path }}"
-    - "{{ alert_manager_templates_dirdirectory_path }}"
+    - "{{ alert_manager_data_directory_path }}"
+    - "{{ alert_manager_configuration_directory_path }}"
+    - "{{ alert_manager_templates_directory_path }}"
 
 - name: "Download and extract Prometheus alertmanager tarball"
   unarchive:
@@ -28,7 +28,7 @@
 - name: "Copy alert manager config"
   template:
     src: alertmanager.yml.j2
-    dest: "{{ alert_manager_config_dirdirectory_path }}/alertmanager.yml"
+    dest: "{{ alert_manager_configuration_directory_path }}/alertmanager.yml"
     owner: "{{ owner_name }}"
     group: "{{ group_name }}"
     validate: "{{ installation_directory_path }}/{{ prometheus_alert_manager_archive }}/amtool check-config %s --alertmanager.url={{ _alert_manager_validate_url }}"

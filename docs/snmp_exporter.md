@@ -5,7 +5,7 @@
 # https://github.com/prometheus/snmp_exporter
 
 # Path to configuration file.
-prometheus_snmp_exporter_config__file: "{{ snmp_exporter_config_directory_path }}/snmp.yml"
+prometheus_snmp_exporter_config__file: "{{ snmp_exporter_configuration_directory_path }}/snmp.yml"
 
 # Address to listen on for web interface and telemetry.
 prometheus_snmp_exporter_web__listen_address: ':9116'

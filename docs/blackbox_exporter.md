@@ -4,7 +4,7 @@
 # Blackbox exporter
 # https://github.com/prometheus/blackbox_exporter
 
-prometheus_black_box_config__file: "{{ blackbox_exporter_config_directoy_path }}/blackbox.yml"
+prometheus_black_box_config__file: "{{ blackbox_exporter_configuration_directoy_path }}/blackbox.yml"
 # Blackbox exporter configuration file.
 
 prometheus_black_box_history__limit: 100

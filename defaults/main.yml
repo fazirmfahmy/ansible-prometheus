@@ -1,6 +1,6 @@
 ---
 
-install_status: true
+server_install_status: true
 node_exporter_install_status: true
 alert_manager_install_status: true
 push_gateway_install_status: false
@@ -16,11 +16,11 @@ library_directory_path: '/var/lib/prometheus'
 rules_directory_path: "{{ server_configuration_directory_path }}/rules"
 
 data_directory_path: "{{ library_directory_path }}/prometheus2"
-alert_manager_data_dirdirectory_path: "{{ library_directory_path }}/alertmanager"
-alert_manager_config_dirdirectory_path: "{{ server_configuration_directory_path }}/alertmanager"
-alert_manager_templates_dirdirectory_path: "{{ server_configuration_directory_path }}/alertmanager/templates"
-snmp_exporter_config_directory_path: "{{ server_configuration_directory_path }}/snmpexporter"
-blackbox_exporter_config_directoy_path: "{{ server_configuration_directory_path }}/blackboxexporter"
+alert_manager_data_directory_path: "{{ library_directory_path }}/alertmanager"
+alert_manager_configuration_directory_path: "{{ server_configuration_directory_path }}/alertmanager"
+alert_manager_templates_directory_path: "{{ server_configuration_directory_path }}/alertmanager/templates"
+snmp_exporter_configuration_directory_path: "{{ server_configuration_directory_path }}/snmpexporter"
+blackbox_exporter_configuration_directoy_path: "{{ server_configuration_directory_path }}/blackboxexporter"
 
 server_version: '2.9.2'
 server_platform_architecture: 'linux-amd64'
@@ -327,7 +327,7 @@ prometheus_alert_manager_config_global:
 
 # The directory from which notification templates are read.
 prometheus_alert_manager_config_templates:
-  - "{{ alert_manager_templates_dirdirectory_path }}/*.tmpl"
+  - "{{ alert_manager_templates_directory_path }}/*.tmpl"
 
 # The root route on which each incoming alert enters.
 prometheus_alert_manager_config_route:
@@ -386,7 +386,7 @@ prometheus_alert_manager_cluster__settle_timeout: '1m'
 prometheus_alert_manager_cluster__tcp_timeout: '10s'
 # Timeout for establishing a stream connection with a remote node for a
 # full state sync, and for stream read and write operations.
-prometheus_alert_manager_config__file: "{{ alert_manager_config_dirdirectory_path }}/alertmanager.yml"
+prometheus_alert_manager_config__file: "{{ alert_manager_configuration_directory_path }}/alertmanager.yml"
 # Alertmanager configuration file name. (default "alertmanager.yml")
 prometheus_alert_manager_data__retention: '120h0m0s'
 # How long to keep data for. (default 120h0m0s)
@@ -394,7 +394,7 @@ prometheus_alert_manager_log__format: 'logfmt'
 # Output format of log messages. One of: [logfmt,json]
 prometheus_alert_manager_log__level: 'info'
 # Only log messages with the given severity or above. Valid levels: [debug, info, warn, error, fatal]. (default info)
-prometheus_alert_manager_storage__path: "{{ alert_manager_data_dirdirectory_path }}"
+prometheus_alert_manager_storage__path: "{{ alert_manager_data_directory_path }}"
 # Base path for data storage. (default "data/")
 prometheus_alert_manager_web__external_url:
 # The URL under which Alertmanager is externally reachable
@@ -431,7 +431,7 @@ prometheus_push_gateway_web__external_url:
 # https://github.com/prometheus/snmp_exporter
 
 # Path to configuration file.
-prometheus_snmp_exporter_config__file: "{{ snmp_exporter_config_directory_path }}/snmp.yml"
+prometheus_snmp_exporter_config__file: "{{ snmp_exporter_configuration_directory_path }}/snmp.yml"
 
 # Address to listen on for web interface and telemetry.
 prometheus_snmp_exporter_web__listen_address: ':9116'
@@ -449,7 +449,7 @@ prometheus_snmp_exporter____enabled_flags: []
 # Blackbox exporter
 # https://github.com/prometheus/blackbox_exporter
 
-prometheus_black_box_config__file: "{{ blackbox_exporter_config_directoy_path }}/blackbox.yml"
+prometheus_black_box_config__file: "{{ blackbox_exporter_configuration_directoy_path }}/blackbox.yml"
 # Blackbox exporter configuration file.
 
 prometheus_black_box_history__limit: 100

@@ -10,7 +10,7 @@
     mode: 0750
   with_items:
     - "{{ server_configuration_directory_path }}"
-    - "{{ snmp_exporter_config_directory_path }}"
+    - "{{ snmp_exporter_configuration_directory_path }}"
 
 - name: "Download and extract Prometheus snmp_exporter tarball"
   unarchive:
@@ -25,7 +25,7 @@
 - name: "Copy snmp exporter config"
   copy:
     src: snmp.yml
-    dest: "{{ snmp_exporter_config_directory_path }}/snmp.yml"
+    dest: "{{ snmp_exporter_configuration_directory_path }}/snmp.yml"
     owner: "{{ owner_name }}"
     group: "{{ group_name }}"
     validate: "{{ installation_directory_path }}/{{ prometheus_snmp_exporter_archive }}/snmp_exporter --dry-run --config.file %s"

@@ -10,7 +10,7 @@
     mode: 0750
   with_items:
     - "{{ server_configuration_directory_path }}"
-    - "{{ blackbox_exporter_config_directoy_path }}"
+    - "{{ blackbox_exporter_configuration_directoy_path }}"
 
 - name: "Download and extract Prometheus blackbox_exporter tarball"
   unarchive:
@@ -22,16 +22,16 @@
     creates: "{{ installation_directory_path }}/{{ prometheus_blackbox_exporter_archive }}"
   ignore_errors: "{{ ansible_check_mode }}"
 
-- name: "Copy blackbox exporter config"
+- name: "Copy Blackbox exporter config"
   template:
     src: blackbox.yml.j2
-    dest: "{{ blackbox_exporter_config_directoy_path }}/blackbox.yml"
+    dest: "{{ blackbox_exporter_configuration_directoy_path }}/blackbox.yml"
     owner: "{{ owner_name }}"
     group: "{{ group_name }}"
   notify:
     - reload blackboxexporter
 
-- name: "Apply elevated privileges to blackbox_exporter for ICMP probe"
+- name: "Apply elevated privileges to Blackbox_exporter for ICMP probe"
   capabilities:
     path: "{{ installation_directory_path }}/{{ prometheus_blackbox_exporter_archive }}/blackbox_exporter"
     capability: cap_net_raw+ep
@@ -40,7 +40,7 @@
   notify:
     - reload blackboxexporter
 
-- name: "Install Prometheus blackbox exporter systemd service"
+- name: "Install Prometheus Blackbox exporter systemd service"
   template:
     src: blackbox_exporter.service.j2
     dest: /etc/systemd/system/blackboxexporter.service
