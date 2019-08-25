@@ -26,7 +26,7 @@
 
 - name: "Copy Prometheus config"
   template:
-    src: prometheus.yml.j2
+    src: prometheus.yml.j2y
     dest: "{{ server_configuration_directory_path }}/prometheus.yml"
     owner: "{{ owner_name }}"
     group: "{{ group_name }}"
