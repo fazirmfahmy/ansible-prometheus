@@ -1,5 +1,5 @@
 galaxy_info:
-  author: "author"
+  author: "Fazir M Fahmy"
   description: "Ansible playbook for managing Prometheus monitoring system"
   company: "company"
 
